@@ -8,8 +8,8 @@
 body {
     background: #f0f2f5;
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 20%),
-        linear-gradient(135deg, #4158D0 0%, #C850C0 40%, #FFCC70 100%);
+        radial-gradient(circle at 10% 20%, rgba(151, 151, 151, 0.8) 0%, rgba(255, 255, 255, 0) 20%),
+        linear-gradient(135deg, #636363 0%, #6b6b6b 40%, #979797 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -301,6 +301,23 @@ body {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.botao-dest {
+    background: linear-gradient(180deg, #3498db25 0%, #14405e 100%);
+    color: rgb(180, 180, 180);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 
+        0 4px 0 #206594,
+        0 4px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
 .botao:hover {
     background: linear-gradient(180deg, #3aa1e2 0%, #2e8bc0 100%);
     transform: translateY(-2px);
@@ -411,7 +428,7 @@ body {
 }
 
 .porta-saida-texto {
-    color: rgba(255, 255, 255, 0.6);
+    color: white;
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 1px;

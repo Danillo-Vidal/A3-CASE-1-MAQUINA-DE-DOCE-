@@ -53,30 +53,35 @@ document.addEventListener('DOMContentLoaded', function() {
         displayMensagem.textContent = msg;
         
         // Só limpa a mensagem automaticamente se tempoMS for especificado
-        if (tempoMS !== null) {
+        if (tempoMS !== null && !msg.includes('Troco: R$')) {
             setTimeout(() => {
                 displayMensagem.textContent = '';
             }, tempoMS);
         }
     };
 
-    // Função para inserir moeda - animação melhorada
     const inserirMoeda = (valor, elemento) => {
-        // Verifica se vai exceder o limite máximo
-        if (saldoAtual + valor > SALDO_MAXIMO) {
-            mostrarMensagem(`Limite de R$ ${SALDO_MAXIMO.toFixed(2).replace('.', ',')} atingido!`, 5000); // Aumentado o tempo
+        // Calcula o saldo futuro antes de iniciar qualquer ação
+        let novoSaldo = saldoAtual + valor;
+    
+        // Verifica se o novo saldo ultrapassa o limite
+        if (novoSaldo > SALDO_MAXIMO) {
+            mostrarMensagem(`Limite de R$ ${SALDO_MAXIMO.toFixed(2).replace('.', ',')} atingido!`, 50000);
             maquinaContainer.style.animation = 'shake 0.5s';
             setTimeout(() => {
                 maquinaContainer.style.animation = '';
             }, 500);
-            return;
+            return; // Sai da função sem adicionar a moeda
         }
-        
-        // Cria clone da moeda para animação
+    
+        // Atualiza saldo primeiro, antes da animação
+        saldoAtual = novoSaldo;
+        atualizarDisplay();
+    
+        // Agora, executa a animação da moeda normalmente
         const moedaClone = elemento.cloneNode(true);
         moedaClone.classList.add('coin-animation');
-        
-        // Define cor da moeda baseado na classe original
+    
         if (elemento.classList.contains('moeda-1')) {
             moedaClone.style.background = 'linear-gradient(145deg, #9b59b6 0%, #8e44ad 100%)';
         } else if (elemento.classList.contains('moeda-2')) {
@@ -84,61 +89,37 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (elemento.classList.contains('moeda-5')) {
             moedaClone.style.background = 'linear-gradient(145deg, #e74c3c 0%, #c0392b 100%)';
         }
-        
-        // Adiciona o clone ao container da máquina
+    
         maquinaContainer.appendChild(moedaClone);
-        
-        // Posiciona a moeda para começar da localização real da moeda original
+    
         const moedaRect = elemento.getBoundingClientRect();
         const maquinaRect = maquinaContainer.getBoundingClientRect();
         const slotRect = slotEntrada.getBoundingClientRect();
-        
-        // Posição inicial - da localização real da moeda
+    
         moedaClone.style.left = `${moedaRect.left - maquinaRect.left}px`;
         moedaClone.style.top = `${moedaRect.top - maquinaRect.top}px`;
-        
-        // Inicia animação
+    
         setTimeout(() => {
-            // Primeira etapa: move para o slot
             moedaClone.style.transition = 'all 0.6s cubic-bezier(.17,.67,.83,.67)';
-            moedaClone.style.left = `${slotRect.left - maquinaRect.left + slotRect.width/2 - 20}px`;
+            moedaClone.style.left = `${slotRect.left - maquinaRect.left + slotRect.width / 2 - 20}px`;
             moedaClone.style.top = `${slotRect.top - maquinaRect.top - 10}px`;
-            
+    
             setTimeout(() => {
-                // Segunda etapa: moeda cai para dentro da máquina
                 moedaClone.style.transition = 'all 0.3s ease-in';
                 moedaClone.style.top = `${slotRect.top - maquinaRect.top + 15}px`;
                 moedaClone.style.transform = 'scale(0.5)';
                 moedaClone.style.opacity = '0';
-                
-                // Toca som de moeda
+    
                 const somMoeda = criarEfeitoSonoroMoeda();
                 somMoeda.play();
-                
-                // Remove clone após animação
+    
                 setTimeout(() => {
                     maquinaContainer.removeChild(moedaClone);
-                    
-                    // Atualiza saldo
-                    saldoAtual += valor;
-                    atualizarDisplay();
-                    
-                    // Mostra mensagem sobre o valor inserido
-                    mostrarMensagem(`Inserido: R$ ${valor.toFixed(2).replace('.', ',')}`, 2000);
-                    
-                    // Após a mensagem temporária, restaura o display do código ou produto selecionado
-                    setTimeout(() => {
-                        if (produtoSelecionado) {
-                            mostrarMensagem(`Selecionado: ${produtoSelecionado.querySelector('.doce-nome').textContent}`);
-                        } else if (codigoDigitado) {
-                            mostrarMensagem(`Código: ${codigoDigitado}`);
-                        }
-                    }, 2100);
-                    
                 }, 300);
             }, 600);
         }, 100);
     };
+    
     
     // Função melhorada para dar troco com animação
     const darTroco = (valorTroco) => {
@@ -174,7 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Mostrar troco no display
-        mostrarMensagem(`Troco: R$ ${valorTroco.toFixed(2).replace('.', ',')}`, 5000);
+        mostrarMensagem(`Troco: R$ ${valorTroco.toFixed(2).replace('.', ',')}`);
+        console.log('Mensagem de troco definida.');
         
         // Efeito sonoro do troco
         const somTroco = criarEfeitoSonoroTroco();
@@ -236,10 +218,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, i * 50);
             }
             
-            // Esconder a área de troco após um tempo
-            setTimeout(() => {
-                trocoArea.classList.add('hidden');
-            }, 1000);
+            // MENSAGEM É REMOVIDA SÓ QUANDO O USUÁRIO COLETA O TROCO
+            document.getElementById('coletar-troco').addEventListener('click', function() {
+    const somTroco = criarEfeitoSonoroTroco();
+    somTroco.play();
+
+    trocoArea.classList.add('hidden');
+    mostrarMensagem(''); // REMOVE A MENSAGEM SOMENTE AGORA
+});
+
         });
 
 
@@ -251,28 +238,28 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const valor = botao.textContent;
         
-        if (valor === 'C') {
+        if (valor === '←') {
             // Limpar código
             codigoDigitado = '';
-            mostrarMensagem('Código limpo', 1500);
+            mostrarMensagem('Produto desmarcado', 30000);
             // Desseleciona produto
             if (produtoSelecionado) {
                 produtoSelecionado.classList.remove('selected');
                 produtoSelecionado = null;
             }
-        } else if (valor === '←') {
+        } else if (valor === 'C') {
             // Apagar último dígito
             codigoDigitado = codigoDigitado.slice(0, -1);
             if (codigoDigitado) {
-                mostrarMensagem(`Código: ${codigoDigitado}`);
+                mostrarMensagem(`Opções selecionadas: ${codigoDigitado}`);
             } else {
                 mostrarMensagem('');
             }
         } else {
             // Adicionar dígito (máximo 2 dígitos)
             if (codigoDigitado.length < 2) {
-                codigoDigitado += valor;
-                mostrarMensagem(`Código: ${codigoDigitado}`);
+                codigoDigitado = valor;
+                mostrarMensagem(`Opções selecionadas: ${codigoDigitado}`);
                 
                 // Verifica se o código corresponde a algum produto
                 const codigo = parseInt(codigoDigitado);
@@ -306,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (codigoDigitado) {
                 mostrarMensagem('Código inválido!', 2500);
             } else {
-                mostrarMensagem('Selecione um produto!', 2500);
+                mostrarMensagem('Selecione um produto!', 25000);
             }
             
             maquinaContainer.style.animation = 'shake 0.5s';
@@ -337,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Mostra mensagem de sucesso
         const nomeDoce = produtoSelecionado.querySelector('.doce-nome').textContent;
-        mostrarMensagem(`${nomeDoce} entregue!`, 3000);
+        mostrarMensagem(`${nomeDoce} entregue!`, 30000);
         
         // Animação de entrega do produto
         const imgDoce = produtoSelecionado.querySelector('img');
