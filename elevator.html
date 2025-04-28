@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevador do Escritório</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="elevator.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Andares do prédio -->
+        <div class="building">
+            <!-- Andar 3 - Diretoria -->
+            <div class="floor floor-3">
+                <div class="floor-info">
+                    <div class="floor-number">3</div>
+                    <div class="floor-name">Diretoria</div>
+                </div>
+                
+                <div class="office-elements">
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="computer"></div>
+                    <div class="computer"></div>
+                    <div class="keyboard"></div>
+                    <div class="keyboard"></div>
+                    <div class="person"></div>
+                    <div class="plant"></div>
+                    <div class="cabinet"></div>
+                </div>
+            </div>
+            
+            <!-- Andar 2 - RH e Marketing -->
+            <div class="floor floor-2">
+                <div class="floor-info">
+                    <div class="floor-number">2</div>
+                    <div class="floor-name">RH e Marketing</div>
+                </div>
+                
+                <div class="office-elements">
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="person"></div>
+                    <div class="person"></div>
+                    <div class="person"></div>
+                    <div class="plant"></div>
+                    <div class="plant"></div>
+                </div>
+            </div>
+            
+            <!-- Andar 1 - Desenvolvimento -->
+            <div class="floor floor-1">
+                <div class="floor-info">
+                    <div class="floor-number">1</div>
+                    <div class="floor-name">Desenvolvimento</div>
+                </div>
+                
+                <div class="office-elements">
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="desk"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="computer"></div>
+                    <div class="computer"></div>
+                    <div class="computer"></div>
+                    <div class="computer"></div>
+                    <div class="person"></div>
+                    <div class="person"></div>
+                    <div class="person"></div>
+                    <div class="person"></div>
+                </div>
+            </div>
+            
+            <!-- Térreo - Recepção -->
+            <div class="floor floor-T">
+                <div class="floor-info">
+                    <div class="floor-number">T</div>
+                    <div class="floor-name">Recepção</div>
+                </div>
+                
+                <div class="office-elements">
+                    <div class="desk"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="chair"></div>
+                    <div class="person"></div>
+                    <div class="plant"></div>
+                    <div class="plant"></div>
+                    <div class="cabinet"></div>
+                    <div class="cabinet"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Efeito de transição entre andares -->
+        <div class="floor-transition"></div>
+        
+        <!-- Elevador centralizado -->
+        <div class="elevator">
+            <div class="elevator-wall"></div>
+            <div class="elevator-mirror"></div>
+            <div class="elevator-railing"></div>
+            <div class="elevator-floor"></div>
+            
+            <div class="elevator-display">T</div>
+            
+            <div class="control-panel">
+                <button class="floor-button" id="button-3" onclick="requestFloor('3')">3</button>
+                <button class="floor-button" id="button-2" onclick="requestFloor('2')">2</button>
+                <button class="floor-button" id="button-1" onclick="requestFloor('1')">1</button>
+                <button class="floor-button" id="button-T" onclick="requestFloor('T')">T</button>
+            </div>
+            
+            <div class="elevator-doors">
+                <div class="door door-left"></div>
+                <div class="door door-right"></div>
+            </div>
+        </div>
+        
+        <!-- Indicador de movimento do elevador -->
+        <div class="elevator-moving-indicator">
+            <span class="text">Elevador em movimento</span>
+            <span class="direction"><i class="fas fa-arrow-up"></i></span>
+        </div>
+        
+        <!-- Instruções do jogo -->
+        <div class="instructions">
+            Clique nos botões do painel para mudar de andar
+        </div>
+        
+        <!-- Overlay para prevenir cliques múltiplos -->
+        <div class="click-overlay"></div>
+    </div>
+
+    <script src="elevator.js"></script>
+</body>
+</html>

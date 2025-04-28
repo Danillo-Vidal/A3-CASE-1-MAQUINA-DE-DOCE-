@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade de Jogos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="menu_jogos.css">
+</head>
+<body>
+    <div class="arcade-container">
+        <div class="arcade-lights">
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+        </div>
+        
+        <h1 class="arcade-title">Game<span>Arcade</span></h1>
+        
+        <div class="games-grid">
+            <!-- Jogo da Máquina de Doces -->
+            <div class="game-card">
+                <div class="game-image sweet-machine"></div>
+                <div class="game-content">
+                    <h3 class="game-title">SweetMachine</h3>
+                    <p class="game-description">Simule a experiência de usar uma máquina de doces. Insira moedas, selecione produtos e receba seu troco!</p>
+                    <a href="maquina-doces.html" class="play-button">
+                        <i class="fas fa-play"></i> Jogar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Jogo 2 (Em breve) -->
+            <div class="game-card">
+                <div class="game-image elevador"></div>
+                <div class="game-content">
+                    <h3 class="game-title">ElevadorGame</h3>
+                    <p class="game-description">Controle um elevador e envie-o para diversos andares de forma rápida e precisa!</p>
+                    <a href="elevator.html" class="play-button">
+                      <i class="fas fa-play"></i> Jogar Agora
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Jogo 3 (Em breve) -->
+            <div class="game-card">
+                <div class="coming-soon-badge">EM BREVE</div>
+                <div class="game-image coming-soon"></div>
+                <div class="game-content">
+                    <h3 class="game-title">Pilhas</h3>
+                    <p class="game-description">Construa a sua própria estrutura de pilhas em C</p>
+                    <button class="play-button" disabled style="opacity: 0.7; cursor: not-allowed;">
+                        <i class="fas fa-clock"></i> Em Breve
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="arcade-footer">
+            <p>© 2025 Game Arcade | Todos os direitos reservados</p>
+        </div>
+    </div>
