@@ -85,12 +85,16 @@ body {
 
 /* Design específico para cada andar */
 .floor-3 {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><rect width="1000" height="1000" fill="%23385170"/><rect x="0" y="0" width="1000" height="120" fill="%23273952"/><rect x="0" y="880" width="1000" height="120" fill="%23273952"/><rect x="100" y="150" width="800" height="600" fill="%232c3e50" rx="5" ry="5"/><rect x="150" y="200" width="300" height="150" fill="%233498db" rx="5" ry="5"/><rect x="500" y="200" width="350" height="150" fill="%239b59b6" rx="5" ry="5"/><rect x="150" y="400" width="700" height="100" fill="%232ecc71" rx="5" ry="5"/><rect x="150" y="550" width="300" height="150" fill="%233498db" rx="5" ry="5"/><rect x="500" y="550" width="350" height="150" fill="%239b59b6" rx="5" ry="5"/></svg>');
+  background: url('ChatGPT\ Image\ Apr\ 28\,\ 2025\,\ 09_33_15\ PM.png');
   background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+
 }
 
 .floor-2 {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><rect width="1000" height="1000" fill="%23263238"/><rect x="0" y="0" width="1000" height="120" fill="%231a232a"/><rect x="0" y="880" width="1000" height="120" fill="%231a232a"/><rect x="100" y="150" width="800" height="600" fill="%23455a64" rx="5" ry="5"/><rect x="150" y="200" width="250" height="150" fill="%2378909c" rx="5" ry="5"/><rect x="150" y="400" width="250" height="150" fill="%2378909c" rx="5" ry="5"/><rect x="150" y="600" width="250" height="100" fill="%2378909c" rx="5" ry="5"/><rect x="450" y="200" width="400" height="150" fill="%2378909c" rx="5" ry="5"/><rect x="450" y="400" width="400" height="150" fill="%2378909c" rx="5" ry="5"/><rect x="450" y="600" width="400" height="100" fill="%2378909c" rx="5" ry="5"/></svg>');
+  background:url('img/rh_market.png'); 
   background-size: cover;
 }
 
@@ -143,230 +147,21 @@ body {
   pointer-events: none;
 }
 
-.desk {
-  position: absolute;
-  width: 150px;
-  height: 80px;
-  background: linear-gradient(to bottom, #8B4513, #6B3311);
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.elevator {
+  position: absolute; /* <- mudou de relative para absolute */
+  left: 49%;
+  top: 64%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 750px;
+  background-color: #95a5a6;
+  border: 6px solid #7f8c8d;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  z-index: 100;
 }
 
-.desk::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10px;
-  right: 10px;
-  height: 5px;
-  background: linear-gradient(to bottom, #A0522D, #8B4513);
-  border-radius: 5px 5px 0 0;
-}
-
-.computer {
-  position: absolute;
-  width: 50px;
-  height: 40px;
-  background: #333;
-  border-radius: 3px;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-}
-
-.computer::before {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 5px;
-  background: #222;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.keyboard {
-  position: absolute;
-  width: 60px;
-  height: 25px;
-  background: #ccc;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
-}
-
-.chair {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(to bottom, #34495e, #2c3e50);
-  border-radius: 5px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-}
-
-.chair::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 10px;
-  width: 40px;
-  height: 5px;
-  background: #34495e;
-  border-radius: 2px;
-}
-
-.person {
-  position: absolute;
-  width: 40px;
-  height: 60px;
-  background-color: #e74c3c;
-  border-radius: 50% 50% 10px 10px;
-}
-
-.person::after {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 7px;
-  width: 25px;
-  height: 25px;
-  background-color: #f39c12;
-  border-radius: 50%;
-}
-
-.plant {
-  position: absolute;
-  width: 50px;
-  height: 80px;
-}
-
-.plant::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 30px;
-  background: #6B3311;
-  border-radius: 3px;
-}
-
-.plant::after {
-  content: '';
-  position: absolute;
-  bottom: 25px;
-  left: 5px;
-  width: 40px;
-  height: 55px;
-  background: radial-gradient(circle at center, #27ae60, #2ecc71);
-  border-radius: 50% 50% 30% 30%;
-}
-
-.cabinet {
-  position: absolute;
-  width: 70px;
-  height: 100px;
-  background: linear-gradient(to bottom, #7f8c8d, #95a5a6);
-  border-radius: 3px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-}
-
-.cabinet::after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  left: 5px;
-  right: 5px;
-  height: 60px;
-  background: rgba(0,0,0,0.1);
-  border-radius: 2px;
-}
-
-/* Posicionamento dos elementos em cada andar */
-/* Andar 3 - Diretoria */
-.floor-3 .desk:nth-child(1) { top: 35%; left: 20%; width: 200px; }
-.floor-3 .desk:nth-child(2) { top: 35%; left: 60%; width: 200px; }
-.floor-3 .chair:nth-child(3) { top: 40%; left: 24%; }
-.floor-3 .chair:nth-child(4) { top: 40%; left: 64%; }
-.floor-3 .computer:nth-child(5) { top: 31%; left: 25%; }
-.floor-3 .computer:nth-child(6) { top: 31%; left: 65%; }
-.floor-3 .keyboard:nth-child(7) { top: 33%; left: 25%; }
-.floor-3 .keyboard:nth-child(8) { top: 33%; left: 65%; }
-.floor-3 .person:nth-child(9) { top: 38%; left: 24%; }
-.floor-3 .plant:nth-child(10) { top: 50%; left: 40%; height: 100px; width: 70px; }
-.floor-3 .cabinet:nth-child(11) { top: 30%; left: 80%; height: 120px; }
-
-/* Andar 2 - RH e Marketing */
-.floor-2 .desk:nth-child(1) { top: 25%; left: 15%; }
-.floor-2 .desk:nth-child(2) { top: 25%; left: 35%; }
-.floor-2 .desk:nth-child(3) { top: 25%; left: 55%; }
-.floor-2 .desk:nth-child(4) { top: 55%; left: 15%; }
-.floor-2 .desk:nth-child(5) { top: 55%; left: 35%; }
-.floor-2 .desk:nth-child(6) { top: 55%; left: 55%; }
-.floor-2 .chair:nth-child(7) { top: 30%; left: 16%; }
-.floor-2 .chair:nth-child(8) { top: 30%; left: 36%; }
-.floor-2 .chair:nth-child(9) { top: 30%; left: 56%; }
-.floor-2 .chair:nth-child(10) { top: 60%; left: 16%; }
-.floor-2 .chair:nth-child(11) { top: 60%; left: 36%; }
-.floor-2 .chair:nth-child(12) { top: 60%; left: 56%; }
-.floor-2 .person:nth-child(13) { top: 28%; left: 16%; }
-.floor-2 .person:nth-child(14) { top: 28%; left: 36%; }
-.floor-2 .person:nth-child(15) { top: 58%; left: 16%; }
-.floor-2 .plant:nth-child(16) { top: 30%; left: 75%; }
-.floor-2 .plant:nth-child(17) { top: 60%; left: 75%; }
-
-/* Andar 1 - Desenvolvimento */
-/* .floor-1 .desk:nth-child(1) { top: 30%; left: 15%; }
-.floor-1 .desk:nth-child(2) { top: 30%; left: 35%; }
-.floor-1 .desk:nth-child(3) { top: 30%; left: 55%; }
-.floor-1 .desk:nth-child(4) { top: 60%; left: 15%; }
-.floor-1 .desk:nth-child(5) { top: 60%; left: 35%; }
-.floor-1 .desk:nth-child(6) { top: 60%; left: 55%; }
-.floor-1 .chair:nth-child(7) { top: 35%; left: 16%; }
-.floor-1 .chair:nth-child(8) { top: 35%; left: 36%; }
-.floor-1 .chair:nth-child(9) { top: 35%; left: 56%; }
-.floor-1 .chair:nth-child(10) { top: 65%; left: 16%; }
-.floor-1 .chair:nth-child(11) { top: 65%; left: 36%; }
-.floor-1 .chair:nth-child(12) { top: 65%; left: 56%; }
-.floor-1 .computer:nth-child(13) { top: 26%; left: 16%; }
-.floor-1 .computer:nth-child(14) { top: 26%; left: 36%; }
-.floor-1 .computer:nth-child(15) { top: 26%; left: 56%; }
-.floor-1 .computer:nth-child(16) { top: 56%; left: 16%; }
-.floor-1 .person:nth-child(17) { top: 33%; left: 16%; }
-.floor-1 .person:nth-child(18) { top: 33%; left: 36%; }
-.floor-1 .person:nth-child(19) { top: 33%; left: 56%; }
-.floor-1 .person:nth-child(20) { top: 63%; left: 16%; } */
-
-/* Térreo - Recepção
-.floor-T .desk:nth-child(1) { top: 40%; left: 20%; width: 220px; height: 90px; }
-.floor-T .chair:nth-child(2) { top: 45%; left: 25%; }
-.floor-T .chair:nth-child(3) { top: 35%; left: 50%; }
-.floor-T .chair:nth-child(4) { top: 35%; left: 60%; }
-.floor-T .chair:nth-child(5) { top: 35%; left: 70%; }
-.floor-T .person:nth-child(6) { top: 43%; left: 25%; }
-.floor-T .plant:nth-child(7) { top: 60%; left: 75%; height: 100px; width: 80px; }
-.floor-T .plant:nth-child(8) { top: 60%; left: 15%; height: 100px; width: 80px; }
-.floor-T .cabinet:nth-child(9) { top: 25%; left: 75%; height: 140px; width: 80px; }
-.floor-T .cabinet:nth-child(10) { top: 45%; left: 75%; height: 140px; width: 80px; } */
-
-/* Elevador Centralizado */
-  .elevator {
-    position: fixed;
-    left: 50.8%;
-    top: 55%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    height: 550px;
-    background-color: #95a5a6;
-    border: 6px solid #7f8c8d;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    z-index: 100;
-}
 
 .elevator-doors {
   position: absolute;
@@ -599,46 +394,6 @@ body {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   animation: pulse 1.5s infinite;
-}
-
-/* Botão específico para o térreo */
-.terreo-button {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 60px;
-  background: linear-gradient(to bottom, #3498db, #2980b9);
-  color: white;
-  border: none;
-  border-radius: 15px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 0 #1c6392, 0 6px 20px rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s;
-  z-index: 6;
-  /* Garantindo que o botão seja clicável */
-  pointer-events: auto;
-}
-
-.terreo-button:hover {
-  background: linear-gradient(to bottom, #2980b9, #3498db);
-  transform: translateY(-3px) translateX(-50%);
-  box-shadow: 0 9px 0 #1c6392, 0 9px 25px rgba(0, 0, 0, 0.35);
-}
-
-.terreo-button:active {
-  transform: translateY(3px) translateX(-50%);
-  box-shadow: 0 3px 0 #1c6392, 0 3px 6px rgba(0, 0, 0, 0.2);
-}
-
-.terreo-button i {
-  margin-right: 8px;
 }
 
 @keyframes pulse {
